@@ -1,46 +1,38 @@
-const backendURL = 'https://biwbongbackend.onrender.com'; // เปลี่ยนเป็น URL backend ของคุณจริงๆ
-// const backendURL = 'http://localhost:3000';
+// const backendURL = 'https://biwbongbackend.onrender.com';
+const backendURL = 'http://localhost:3000';
 
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
+// ฟังก์ชัน login
+async function login(username, password) {
+  const res = await fetch(`${backendURL}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({ username, password })
+  });
 
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value;
+  const data = await res.json();
 
-  try {
-    const res = await fetch(`${backendURL}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({ username, password })
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-
-      Swal.fire({
-        icon: 'success',
-        title: 'เข้าสู่ระบบสำเร็จ',
-        timer: 1500,
-        showConfirmButton: false
-      });
-
-      setTimeout(() => {
-        window.location.href = 'dashboard.html';  // เปลี่ยนเป็นหน้า dashboard ของคุณ
-      }, 1500);
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'เข้าสู่ระบบไม่สำเร็จ',
-        text: data.message || 'เกิดข้อผิดพลาด'
-      });
-    }
-  } catch (error) {
-    Swal.fire({
-      icon: 'error',
-      title: 'เกิดข้อผิดพลาด',
-      text: error.message
-    });
+  if (!res.ok) {
+    throw new Error(data.message || 'เข้าสู่ระบบไม่สำเร็จ');
   }
-});
+
+  return data;
+}
+
+// ดึง token จาก cookie (กรณี httpOnly: false เท่านั้น)
+function getTokenFromCookie() {
+  const cookies = document.cookie.split(';');
+  for (const c of cookies) {
+    const [key, value] = c.trim().split('=');
+    if (key === 'token') return value;
+  }
+  return null;
+}
+
+// logout
+async function logout() {
+  await fetch(`${backendURL}/auth/logout`, {
+    method: 'POST',
+    credentials: 'include'
+  });
+}
