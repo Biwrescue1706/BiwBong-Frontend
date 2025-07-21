@@ -11,13 +11,14 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const res = await fetch(`${backendURL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',  // ต้องมีเพื่อส่ง/รับ cookie
+      credentials: 'include',
       body: JSON.stringify({ username, password })
     });
 
     const data = await res.json();
 
     if (res.ok) {
+
       Swal.fire({
         icon: 'success',
         title: 'เข้าสู่ระบบสำเร็จ',
