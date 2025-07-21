@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="CSS/dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+  <div id="navbar"></div>
+
+  <div class="dashboard-container">
+    <button id="addBtn">➕ เพิ่มอุปกรณ์</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ชื่อ</th>
+          <th>ทั้งหมด</th>
+          <th>เหลือ</th>
+          <th>การจัดการ</th>
+        </tr>
+      </thead>
+      <tbody id="equipmentTableBody"></tbody>
+    </table>
+  </div>
+
+  <script src="JS/auth.js"></script>
+  <script src="JS/nav.js"></script>
+  <script src="JS/dashboard.js"></script>
+</body>
+
+</html>

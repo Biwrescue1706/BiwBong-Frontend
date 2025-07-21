@@ -1,0 +1,113 @@
+/* รวม body ไว้ส่วนเดียว */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fc;
+  margin: 0;
+  padding: 20px; /* padding เล็กน้อย สำหรับหน้า */
+  color: #333;
+}
+
+#navbar {
+  margin-bottom: 20px;
+}
+
+.dashboard-container {
+  background-color: #ffffff;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto; /* กึ่งกลาง */
+}
+
+h1 {
+  margin-bottom: 24px;
+  color: #0d6efd;
+  font-weight: 700;
+}
+
+#welcomeMsg {
+  font-size: 1.2rem;
+  margin-bottom: 32px;
+}
+
+#logoutBtn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logoutBtn:hover {
+  background-color: #c82333;
+}
+
+nav {
+  background-color: #20c997;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+nav strong {
+  color: white;
+  font-size: 1.2em;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #20c997;
+  color: white;
+}
+
+#addBtn {
+  background-color: #20c997;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+#addBtn:hover {
+  background-color: #17a2b8;
+}

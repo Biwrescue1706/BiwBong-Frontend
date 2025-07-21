@@ -1,36 +1,42 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('loginForm');
+// ต้องโหลด auth.js ก่อนถึงจะใช้ได้
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value;
+  const username = e.target.username.value.trim();
+  const password = e.target.password.value;
 
+  try {
+    const data = await login(username, password);
+
+    Swal.fire({
+      icon: 'success',
+      title: 'เข้าสู่ระบบสำเร็จ',
+      timer: 500,
+      showConfirmButton: false,
+    });
+
+    // ถ้า cookie ไม่ใช่ httpOnly จะอ่านได้ token จาก cookie
+    const token = fetchUserProfile();
+    console.log('Token จาก cookie:', token);
+
+    // ดึงข้อมูล profile (ถ้า token ถูกต้อง)
     try {
-      await login(username, password);
-
-      // แสดง token ถ้าไม่เป็น httpOnly
-      const token = getTokenFromCookie();
-      console.log('Token:', token || 'token is httpOnly');
-
-      Swal.fire({
-        icon: 'success',
-        title: 'เข้าสู่ระบบสำเร็จ',
-        timer: 200000,
-        showConfirmButton: false
-      });
-
-      setTimeout(() => {
-        window.location.href = 'dashboard.html'; // แก้ชื่อหน้าได้ตามต้องการ
-      }, 200000);
-
+      const user = await fetchUserProfile();
+      console.log('ข้อมูลผู้ใช้:', user);
     } catch (err) {
-      Swal.fire({
-        icon: 'error',
-        title: 'เกิดข้อผิดพลาด',
-        text: err.message
-      });
+      console.warn('ดึง profile ไม่สำเร็จ:', err.message);
     }
-  });
+
+    setTimeout(() => {
+      window.location.href = 'dashboard.html'; // เปลี่ยนตามหน้า dashboard
+    }, 1500);
+
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'เข้าสู่ระบบไม่สำเร็จ',
+      text: error.message,
+    });
+  }
 });
