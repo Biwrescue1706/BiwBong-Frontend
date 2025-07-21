@@ -1,4 +1,5 @@
-const backendURL = 'https://biwbong-backend.onrender.com'; // เปลี่ยนเป็น URL backend ของคุณจริงๆ
+const backendURL = 'https://biwbongbackend.onrender.com'; // เปลี่ยนเป็น URL backend ของคุณจริงๆ
+// const backendURL = 'http://localhost:3000';
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
