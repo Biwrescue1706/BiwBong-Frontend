@@ -1,34 +1,45 @@
-
 document.addEventListener('DOMContentLoaded', async () => {
   await checkLogin();       // ตรวจสอบว่า login อยู่ไหม
-  await loadNavbar();       // โหลด navbar (ถ้ามี nav.js)
-  await loadEquipments();   // โหลดอุปกรณ์
+  await loadNavbar();       // โหลด navbar
+  await loadEquipments();   // โหลดรายการอุปกรณ์
+
+  // ผูก event ปุ่มเพิ่มอุปกรณ์ (ถ้ามี)
+  document.getElementById('addEquipmentBtn')?.addEventListener('click', addEquipment);
 });
 
-// ✅ ตรวจสอบว่า login หรือไม่ (ถ้าไม่ได้ ให้ redirect)
+// ตรวจสอบ login ถ้าไม่ login จะ redirect ไปหน้า login
 async function checkLogin() {
   try {
     const user = await fetchUserProfile();
 
-    // (ตัวอย่าง) แสดงชื่อในหน้า
     const usernameEl = document.getElementById('username');
     if (usernameEl) {
       usernameEl.textContent = user.Username || user.name || 'ไม่มีชื่อ';
     }
 
     return user;
+    
   } catch (err) {
     console.warn('ยังไม่ได้เข้าสู่ระบบ:', err.message);
-    window.location.href = 'index.html'; // redirect กลับหน้า login
+    Swal.fire({
+      icon: 'error',
+      title: 'กรุณาเข้าสู่ระบบก่อนใช้งาน',
+      timer: 1500,
+      showConfirmButton: false,
+    }).then(() => {
+      window.location.href = 'index.html';
+    });
   }
 }
 
-// ✅ โหลดข้อมูลอุปกรณ์
+// โหลดรายการอุปกรณ์และแสดงในตาราง
 async function loadEquipments() {
   try {
     const res = await fetch(`${backendURL}/equipments/getall`, {
       credentials: 'include',
     });
+    if (!res.ok) throw new Error('โหลดข้อมูลล้มเหลว');
+
     const equipments = await res.json();
 
     const table = document.getElementById('equipmentTableBody');
@@ -37,23 +48,85 @@ async function loadEquipments() {
     equipments.forEach((e, index) => {
       table.innerHTML += `
         <tr>
-            <td data-label="ลำดับ">${index + 1}</td>
-            <td data-label="ชื่อ">${e.EName}</td>
-            <td data-label="ทั้งหมด">${e.Total}</td>
-            <td data-label="เหลือ">${e.Available}</td>
-            <td data-label="การจัดการ">
-                <button onclick="editEquipment('${e.EID}')">แก้ไข</button>
-                <button onclick="deleteEquipment('${e.EID}')">ลบ</button>
-            </td>
+          <td data-label="ลำดับ">${index + 1}</td>
+          <td data-label="ชื่อ">${e.EName}</td>
+          <td data-label="ทั้งหมด">${e.Total}</td>
+          <td data-label="เหลือ">${e.Available}</td>
+          <td data-label="จัดการ">
+            <button onclick="editEquipment('${e.EID}')">แก้ไข</button>
+            <button onclick="deleteEquipment('${e.EID}')">ลบ</button>
+          </td>
         </tr>
       `;
     });
   } catch (err) {
     console.error('โหลดข้อมูลอุปกรณ์ล้มเหลว', err);
+    Swal.fire({
+      icon: 'error',
+      title: 'โหลดข้อมูลอุปกรณ์ล้มเหลว',
+      text: err.message,
+    });
   }
 }
 
-// ✅ ลบอุปกรณ์ (SweetAlert2)
+// ฟังก์ชันเพิ่มอุปกรณ์
+async function addEquipment() {
+  const { value: formValues } = await Swal.fire({
+    title: 'เพิ่มอุปกรณ์ใหม่',
+    html:
+      '<input id="ename" class="swal2-input" placeholder="ชื่ออุปกรณ์">' +
+      '<input id="etotal" type="number" min="1" class="swal2-input" placeholder="จำนวนทั้งหมด">',
+    focusConfirm: false,
+    showCancelButton: true,
+    confirmButtonText: 'ยืนยัน',
+    cancelButtonText: 'ยกเลิก',
+    preConfirm: () => {
+      const name = document.getElementById('ename').value.trim();
+      const total = parseInt(document.getElementById('etotal').value);
+      if (!name || isNaN(total) || total <= 0) {
+        Swal.showValidationMessage('กรุณากรอกชื่อและจำนวนที่ถูกต้อง');
+        return;
+      }
+      return { EName: name, Total: total };
+    }
+  });
+
+  if (!formValues) return;
+
+  try {
+    const res = await fetch(`${backendURL}/equipments/getall/create`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formValues),
+    });
+
+    if (res.ok) {
+      Swal.fire({
+        icon: 'success',
+        title: 'เพิ่มอุปกรณ์สำเร็จ',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      loadEquipments();
+    } else {
+      const errorData = await res.json();
+      Swal.fire({
+        icon: 'error',
+        title: 'เกิดข้อผิดพลาด',
+        text: errorData.message || 'ไม่สามารถเพิ่มอุปกรณ์ได้',
+      });
+    }
+  } catch (err) {
+    Swal.fire({
+      icon: 'error',
+      title: 'เกิดข้อผิดพลาด',
+      text: err.message || 'ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์',
+    });
+  }
+}
+
+// ฟังก์ชันลบอุปกรณ์
 async function deleteEquipment(id) {
   const result = await Swal.fire({
     title: 'คุณแน่ใจหรือไม่?',
@@ -62,7 +135,6 @@ async function deleteEquipment(id) {
     showCancelButton: true,
     confirmButtonText: 'ยืนยัน',
     cancelButtonText: 'ยกเลิก',
-    reverseButtons: true
   });
 
   if (!result.isConfirmed) return;
@@ -77,8 +149,8 @@ async function deleteEquipment(id) {
       Swal.fire({
         icon: 'success',
         title: 'ลบสำเร็จ',
-        showConfirmButton: false,
         timer: 1500,
+        showConfirmButton: false,
       });
       loadEquipments();
     } else {
@@ -88,11 +160,76 @@ async function deleteEquipment(id) {
         text: 'ไม่สามารถลบข้อมูลได้',
       });
     }
-  } catch (error) {
+  } catch (err) {
     Swal.fire({
       icon: 'error',
       title: 'เกิดข้อผิดพลาด',
-      text: error.message || 'ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้',
+      text: err.message || 'ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์',
+    });
+  }
+}
+
+// ฟังก์ชันแก้ไขอุปกรณ์
+async function editEquipment(id) {
+  try {
+    const res = await fetch(`${backendURL}/equipments/getall/${id}`, {
+      credentials: 'include',
+    });
+
+    if (!res.ok) throw new Error('ไม่สามารถดึงข้อมูลอุปกรณ์');
+
+    const equipment = await res.json();
+
+    const { value: formValues } = await Swal.fire({
+      title: 'แก้ไขอุปกรณ์',
+      html:
+        `<input id="ename" class="swal2-input" placeholder="ชื่ออุปกรณ์" value="${equipment.EName}">` +
+        `<input id="etotal" type="number" min="1" class="swal2-input" placeholder="จำนวนทั้งหมด" value="${equipment.Total}">`,
+      focusConfirm: false,
+      showCancelButton: true,
+      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: 'ยกเลิก',
+      preConfirm: () => {
+        const name = document.getElementById('ename').value.trim();
+        const total = parseInt(document.getElementById('etotal').value);
+        if (!name || isNaN(total) || total <= 0) {
+          Swal.showValidationMessage('กรุณากรอกชื่อและจำนวนที่ถูกต้อง');
+          return;
+        }
+        return { EName: name, Total: total };
+      }
+    });
+
+    if (!formValues) return;
+
+    const updateRes = await fetch(`${backendURL}/equipments/getall/${id}`, {
+      method: 'PUT',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formValues),
+    });
+
+    if (updateRes.ok) {
+      Swal.fire({
+        icon: 'success',
+        title: 'อัปเดตสำเร็จ',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      loadEquipments();
+    } else {
+      const errData = await updateRes.json();
+      Swal.fire({
+        icon: 'error',
+        title: 'อัปเดตไม่สำเร็จ',
+        text: errData.message || 'ไม่สามารถอัปเดตอุปกรณ์ได้',
+      });
+    }
+  } catch (err) {
+    Swal.fire({
+      icon: 'error',
+      title: 'เกิดข้อผิดพลาด',
+      text: err.message || 'ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์',
     });
   }
 }

@@ -1,3 +1,5 @@
+
+// ดักจับการ submit ฟอร์ม login
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -5,32 +7,31 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const password = e.target.password.value;
 
   try {
+    // เรียกฟังก์ชัน login ใน auth.js
     await login(username, password);
 
+    // ดึงข้อมูล user profile เพื่อตรวจสอบ token
+    const user = await fetchUserProfile();
+
+    // แสดง popup แจ้ง success
     Swal.fire({
       icon: 'success',
-      title: 'เข้าสู่ระบบสำเร็จ',
-      timer: 1500,
+      title: `ยินดีต้อนรับ ${user.name}`,
+      timer: 1000,
       showConfirmButton: false,
     });
 
-    // รอ fetchUserProfile ให้เสร็จก่อน
-    try {
-      const user = await fetchUserProfile();
-      console.log('ข้อมูลผู้ใช้:', user);
-    } catch (err) {
-      console.warn('ดึง profile ไม่สำเร็จ:', err.message);
-    }
-
+    // รอให้ popup แสดงสักครู่ก่อน redirect
     setTimeout(() => {
-      window.location.href = 'dashboard.html'; // เปลี่ยนเป็นหน้าหลักหลัง login
-    }, 1500);
+      window.location.href = 'dashboard.html';
+    }, 1000);
 
   } catch (error) {
+    // ถ้า login หรือ fetch profile ล้มเหลว แจ้ง error
     Swal.fire({
       icon: 'error',
       title: 'เข้าสู่ระบบไม่สำเร็จ',
-      text: error.message,
+      text: error.message || 'เกิดข้อผิดพลาด',
     });
   }
 });

@@ -1,0 +1,167 @@
+/* === Reset พื้นฐาน === */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+/* === หัวข้อหลัก === */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* === ตาราง === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* === หัวตาราง === */
+thead {
+  background-color: #20c997;
+  color: white;
+}
+
+thead th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+/* === แถวข้อมูล === */
+tbody tr:nth-child(even) {
+  background-color: #f2f6fc;
+}
+
+tbody tr:hover {
+  background-color: #dbe9fb;
+  cursor: default;
+}
+
+tbody td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* === ปุ่มจัดการ === */
+button {
+  margin: 2px;
+  padding: 6px 12px;
+  background-color: #0d6efd;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0b5ed7;
+}
+
+/* ปุ่มแก้ไข (editUser) */
+button.editUser {
+  background-color: #ffc107; /* สีส้ม */
+  color: #212529;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin: 2px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+button.editUser:hover {
+  background-color: #e0a800;
+  color: white;
+}
+
+/* ปุ่มลบ (deleteUser) */
+button.deleteUser {
+  background-color: #dc3545; /* สีแดง */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin: 2px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+button.deleteUser:hover {
+  background-color: #bb2d3b;
+}
+
+/* === Responsive สำหรับหน้าจอเล็ก === */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    padding-left: 10px;
+    font-weight: bold;
+    text-align: left;
+    color: #333;
+  }
+}
+
+/* สำหรับหน้าจอเล็กมาก */
+@media (max-width: 250px) {
+  body {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  button {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  td {
+    padding: 8px 10px;
+  }
+}
