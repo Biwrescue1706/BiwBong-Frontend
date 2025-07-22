@@ -1,0 +1,77 @@
+/* navbar.css */
+
+/* กำหนดพื้นหลังและขนาดของ navbar */
+#navbar nav {
+  background-color: #2ff068bb;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  user-select: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* จัดหัวข้อใหญ่ */
+#navbar h1 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  color: #000000;
+}
+
+/* หัวข้อรอง */
+#navbar h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+/* ลิสต์เมนู */
+#navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* ลบ bullet และจัดลิสต์ให้อยู่ในแนวนอน */
+#navbar ul li {
+  margin: 0;
+}
+
+/* ปุ่มเมนู */
+#navbar button.nav-btn,
+#navbar button#logoutBtn {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  color: #ff1e00;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+/* เอฟเฟกต์เมื่อชี้ หรือ กดโฟกัส */
+#navbar button.nav-btn:hover,
+#navbar button.nav-btn:focus,
+#navbar button#logoutBtn:hover,
+#navbar button#logoutBtn:focus {
+  background-color: #007bff;
+  color: white;
+  outline: none;
+}
+
+/* รองรับการแสดงผลบนหน้าจอเล็ก */
+@media (max-width: 750px) {
+  #navbar ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  #navbar button.nav-btn,
+  #navbar button#logoutBtn {
+    width: 100%;
+    text-align: left;
+  }
+}

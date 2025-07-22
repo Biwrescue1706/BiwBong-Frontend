@@ -52,7 +52,7 @@ form button {
 }
 
 form button:hover {
-  background-color: #17a589;
+  background-color: #a51717;
 }
 
 p {
@@ -67,4 +67,24 @@ p a {
 
 p a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 750px) {
+  body {
+    height: auto;
+    padding: 20px;
+    align-items: flex-start;
+  }
+
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  form button {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+  }
 }

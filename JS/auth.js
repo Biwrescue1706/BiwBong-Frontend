@@ -56,3 +56,4 @@ async function fetchUserProfile() {
   const data = await res.json();
   return data.user;
 }
+

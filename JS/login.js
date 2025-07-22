@@ -1,5 +1,3 @@
-// ต้องโหลด auth.js ก่อนถึงจะใช้ได้
-
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -7,20 +5,16 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const password = e.target.password.value;
 
   try {
-    const data = await login(username, password);
+    await login(username, password);
 
     Swal.fire({
       icon: 'success',
       title: 'เข้าสู่ระบบสำเร็จ',
-      timer: 500,
+      timer: 1500,
       showConfirmButton: false,
     });
 
-    // ถ้า cookie ไม่ใช่ httpOnly จะอ่านได้ token จาก cookie
-    const token = fetchUserProfile();
-    console.log('Token จาก cookie:', token);
-
-    // ดึงข้อมูล profile (ถ้า token ถูกต้อง)
+    // รอ fetchUserProfile ให้เสร็จก่อน
     try {
       const user = await fetchUserProfile();
       console.log('ข้อมูลผู้ใช้:', user);
@@ -29,7 +23,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     }
 
     setTimeout(() => {
-      window.location.href = 'dashboard.html'; // เปลี่ยนตามหน้า dashboard
+      window.location.href = 'dashboard.html'; // เปลี่ยนเป็นหน้าหลักหลัง login
     }, 1500);
 
   } catch (error) {

@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
   <meta charset="UTF-8" />
-  <title>Dashboard</title>
+  <title>ระบบจัดการอุปกรณ์</title>
   <link rel="stylesheet" href="CSS/dashboard.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="css/navbar.css" />
+
 </head>
 
 <body>
+
   <div id="navbar"></div>
 
   <div class="dashboard-container">
@@ -16,11 +21,14 @@
     <table>
       <thead>
         <tr>
+          <th class="fd">ลำดับ</th>
           <th>ID</th>
           <th>ชื่อ</th>
           <th>ทั้งหมด</th>
           <th>เหลือ</th>
+          <th>ยืม</th>
           <th>การจัดการ</th>
+
         </tr>
       </thead>
       <tbody id="equipmentTableBody"></tbody>

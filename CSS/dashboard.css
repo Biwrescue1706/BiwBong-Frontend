@@ -94,12 +94,12 @@ table th, table td {
 }
 
 table th {
-  background-color: #20c997;
+  background-color: #8ce03c80;
   color: white;
 }
 
 #addBtn {
-  background-color: #20c997;
+  background-color: #dde6e3;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -110,4 +110,138 @@ table th {
 
 #addBtn:hover {
   background-color: #17a2b8;
+}
+
+/* ====== สไตล์พื้นฐาน ====== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+#addBtn {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+#addBtn:hover {
+  background-color: #084298;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #53ff04;
+  color: white;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th.fd {
+  width: 60px;
+}
+
+tbody tr:hover {
+  background-color: #f1f9f8;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  margin: 2px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button[onclick*="editEquipment"] {
+  background-color: #0dcaf0; /* ฟ้า */
+}
+
+button[onclick*="deleteEquipment"] {
+  background-color: #dc3545; /* แดง */
+}
+
+/* ====== Responsive สำหรับจอเล็ก ====== */
+@media screen and (max-width: 750px) {
+  .dashboard-container {
+    padding: 0 10px;
+  }
+  
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tbody tr {
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  tbody tr:hover {
+    background-color: #e0f7f4;
+  }
+
+  td {
+    border: none;
+    padding-left: 50%;
+    position: relative;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    font-weight: 600;
+    color: #20c997;
+    white-space: nowrap;
+  }
+
+  button {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
 }
