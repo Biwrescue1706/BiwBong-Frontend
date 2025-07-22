@@ -1,5 +1,5 @@
-// const backendURL = 'https://biwbongbackend.onrender.com'; // เปลี่ยน URL ตาม backend ของคุณ
-const backendURL = 'http://localhost:3000'; // เปลี่ยน URL ตาม backend ของคุณ
+const backendURL = 'https://biwbongbackend.onrender.com'; // เปลี่ยน URL ตาม backend ของคุณ
+//const backendURL = 'http://localhost:3000'; // เปลี่ยน URL ตาม backend ของคุณ
 
 // ✅ Login (ใช้ใน login.html)
 async function login(username, password) {
