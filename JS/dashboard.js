@@ -42,7 +42,7 @@ async function loadEquipments() {
 
     const equipments = await res.json();
 
-equipments.sort((a, b) => b.EName.localeCompare(a.EName));
+equipments.sort((a, b) => a.EName.localeCompare(b.EName, 'th', { sensitivity: 'base' }));
 
     const table = document.getElementById('equipmentTableBody');
     table.innerHTML = '';
