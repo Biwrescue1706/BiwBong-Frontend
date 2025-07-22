@@ -1,7 +1,7 @@
-import { formatDateThai, loadNavbar } from './utils.js';
+import { formatDateThai } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  await loadNavbar();
+  await loadNavbar(); // โหลด navbar
 
   try {
     const res = await fetch(`${backendURL}/users/getall`, {
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!res.ok) throw new Error('โหลดข้อมูลผู้ใช้ล้มเหลว');
 
     const users = await res.json();
+
     const tbody = document.getElementById('usersTableBody');
     tbody.innerHTML = '';
 
@@ -18,14 +19,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       tbody.innerHTML += `
         <tr>
           <td data-label="ลำดับ">${index + 1}</td>
-          <td data-label="UserId">${e.UserId}</td>
+          <td data-label="UsersId">${e.UserId}</td>
           <td data-label="Username">${e.username || '-'}</td>
           <td data-label="ชื่อ">${e.name || '-'}</td>
           <td data-label="วันที่สร้างบัญชี">${e.Created_At ? formatDateThai(e.Created_At) : '-'}</td>
           <td data-label="วันที่แก้ไข">${e.Update_At ? formatDateThai(e.Update_At) : '-'}</td>
           <td data-label="จัดการ">
-            <button onclick="editUser('${e.UserId}')">แก้ไข</button>
-            <button onclick="deleteUser('${e.UserId}')">ลบ</button>
+            <button onclick="edituser('${e.UserId}', '${e.username}', '${e.name}')">แก้ไข</button>
+            <button onclick="deleteuser('${e.UserId}')">ลบ</button>
           </td>
         </tr>
       `;
@@ -41,82 +42,74 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-// ======= ✏️ แก้ไขผู้ใช้ =======
-window.editUser = async (userId) => {
+window.edituser = async function (userId, currentUsername, currentName) {
+  const { value: formValues } = await Swal.fire({
+    title: 'แก้ไขผู้ใช้',
+    html:
+      `<input id="swal-username" class="swal2-input" placeholder="Username" value="${currentUsername}">` +
+      `<input id="swal-name" class="swal2-input" placeholder="ชื่อ" value="${currentName}">`,
+    focusConfirm: false,
+    showCancelButton: true,
+    confirmButtonText: 'บันทึก',
+    cancelButtonText: 'ยกเลิก',
+    preConfirm: () => {
+      return {
+        username: document.getElementById('swal-username').value.trim(),
+        name: document.getElementById('swal-name').value.trim(),
+      };
+    }
+  });
+
+  if (!formValues) return;
+
   try {
     const res = await fetch(`${backendURL}/users/getall/${userId}`, {
-      method: 'GET',
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       credentials: 'include',
+      body: JSON.stringify(formValues)
     });
 
-    if (!res.ok) throw new Error('โหลดข้อมูลผู้ใช้ไม่สำเร็จ');
+    if (!res.ok) throw new Error('ไม่สามารถแก้ไขผู้ใช้ได้');
 
-    const user = await res.json();
-
-    const { value: formValues } = await Swal.fire({
-      title: `แก้ไขผู้ใช้ ID: ${userId}`,
-      html: `
-        <input id="swal-username" class="swal2-input" placeholder="Username" value="${user.username || ''}">
-        <input id="swal-name" class="swal2-input" placeholder="ชื่อ-นามสกุล" value="${user.name || ''}">
-      `,
-      focusConfirm: false,
-      showCancelButton: true,
-      confirmButtonText: 'บันทึก',
-      cancelButtonText: 'ยกเลิก',
-      preConfirm: () => {
-        return {
-          username: document.getElementById('swal-username').value.trim(),
-          name: document.getElementById('swal-name').value.trim()
-        };
-      }
-    });
-
-    if (formValues) {
-      const updateRes = await fetch(`${backendURL}/users/getall/${userId}`, {
-        method: 'PUT',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formValues),
-      });
-
-      if (!updateRes.ok) throw new Error('อัปเดตข้อมูลล้มเหลว');
-
-      Swal.fire('สำเร็จ', 'แก้ไขข้อมูลเรียบร้อยแล้ว', 'success');
+    Swal.fire('สำเร็จ!', 'แก้ไขข้อมูลผู้ใช้เรียบร้อยแล้ว', 'success').then(() => {
       location.reload();
-    }
+    });
+
   } catch (err) {
     console.error(err);
     Swal.fire('ผิดพลาด', err.message, 'error');
   }
 };
 
-// ======= 🗑️ ลบผู้ใช้ =======
-window.deleteUser = async (userId) => {
+window.deleteuser = async function (userId) {
   const confirm = await Swal.fire({
-    title: 'ยืนยันการลบ',
-    text: `คุณต้องการลบผู้ใช้ ID: ${userId} ใช่หรือไม่?`,
+    title: 'ยืนยันการลบ?',
+    text: `คุณต้องการลบผู้ใช้ ${userId} ใช่หรือไม่?`,
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonText: 'ลบ',
+    confirmButtonText: 'ใช่, ลบเลย!',
     cancelButtonText: 'ยกเลิก'
   });
 
-  if (confirm.isConfirmed) {
-    try {
-      const res = await fetch(`${backendURL}/users/getall/${userId}`, {
-        method: 'DELETE',
-        credentials: 'include',
-      });
+  if (!confirm.isConfirmed) return;
 
-      if (!res.ok) throw new Error('ลบผู้ใช้ไม่สำเร็จ');
+  try {
+    const res = await fetch(`${backendURL}/users/getall/${userId}`, {
+      method: 'DELETE',
+      credentials: 'include'
+    });
 
-      Swal.fire('สำเร็จ', 'ลบผู้ใช้เรียบร้อยแล้ว', 'success');
+    if (!res.ok) throw new Error('ไม่สามารถลบผู้ใช้ได้');
+
+    Swal.fire('ลบแล้ว!', 'ผู้ใช้ถูกลบเรียบร้อยแล้ว', 'success').then(() => {
       location.reload();
-    } catch (err) {
-      console.error(err);
-      Swal.fire('ผิดพลาด', err.message, 'error');
-    }
+    });
+
+  } catch (err) {
+    console.error(err);
+    Swal.fire('ผิดพลาด', err.message, 'error');
   }
 };
