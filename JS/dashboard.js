@@ -42,6 +42,8 @@ async function loadEquipments() {
 
     const equipments = await res.json();
 
+equipments.sort((a, b) => b.EName.localeCompare(a.EName));
+
     const table = document.getElementById('equipmentTableBody');
     table.innerHTML = '';
 
