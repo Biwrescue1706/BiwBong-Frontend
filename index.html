@@ -22,14 +22,24 @@
       <label for="username">ชื่อผู้ใช้</label>
       <input type="text" id="username" name="username" required />
       <label for="password">รหัสผ่าน</label>
-      <input type="password" id="password" name="password" required />
+      <div class="password-container">
+        <input type="password" id="password" name="password" required />
+        <span id="togglePassword" class="toggle-password">👁️</span>
+      </div>
       <button type="submit">เข้าสู่ระบบ</button>
+
+      <p style="margin-top: 10px; text-align: right;">
+        <a href="forgotPassword.html" id="forgotPasswordLink" style="color: #007bff; cursor: pointer; text-decoration: underline;">
+          ฉันลืมรหัสผ่าน
+        </a>
+      </p>
     </form>
+
 
   </div>
 
   <script src="JS/auth.js"></script>
- 
+
   <script src="JS/login.js"></script>
 
 </body>

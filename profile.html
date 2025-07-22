@@ -2,41 +2,43 @@
 <html lang="th">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>รายชื่อผู้ใช้ทั้งหมด</title>
-    <link rel="stylesheet" href="CSS/profile.css" />
-    <link rel="stylesheet" href="CSS/navbar.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>รายชื่อผู้ใช้ทั้งหมด</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="JS/auth.js"></script>
-    <script src="JS/nav.js"></script>
-    <script type="module" src="JS/users.js"></script>
+  <link rel="stylesheet" href="CSS/profile.css" />
+  <link rel="stylesheet" href="CSS/navbar.css" />
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="JS/auth.js"></script>
+  <script src="JS/nav.js"></script>
+  <script type="module" src="JS/users.js"></script>
 </head>
 
 <body>
-    <div id="navbar"></div>
+  <div id="navbar"></div>
 
-    <main>
-        <h2>รายชื่อผู้ใช้ทั้งหมด</h2>
-        <table border="1" id="usersTable" style="width: 100%; border-collapse: collapse;">
-           <button id="addUserBtn">➕ เพิ่มสมาชิก</button>
-<table>
-  <thead>
-    <tr>
-      <th>ลำดับ</th>
-      <th>UserId</th>
-      <th>Username</th>
-      <th>ชื่อ</th>
-      <th>วันที่สร้าง</th>
-      <th>วันที่แก้ไข</th>
-      <th>จัดการ</th>
-    </tr>
-  </thead>
-  <tbody id="usersTableBody"></tbody>
-        </table>
-    </main>
+  <main>
+    <h2>รายชื่อผู้ใช้ทั้งหมด</h2>
+
+    <!-- ✅ ปุ่มอยู่นอก table -->
+    <button id="addUserBtn">➕ เพิ่มสมาชิก</button>
+
+    <table border="1" id="usersTable" style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>ลำดับ</th>
+          <th>UserId</th>
+          <th>Username</th>
+          <th>ชื่อ</th>
+          <th>วันที่สร้าง</th>
+          <th>วันที่แก้ไข</th>
+          <th>จัดการ</th>
+        </tr>
+      </thead>
+      <tbody id="usersTableBody"></tbody>
+    </table>
+  </main>
 </body>
 
 </html>
