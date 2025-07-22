@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     users.forEach((e, index) => {
       tbody.innerHTML += `
         <tr>
-          <td>${index + 1}</td>
+          <td data-label="ลำดับ">${index + 1}</td>
           <td data-label="UsersId">${e.UserId}</td>
           <td data-label="Username">${e.username || '-'}</td>
           <td data-label="ชื่อ">${e.name || '-'}</td>
