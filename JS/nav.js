@@ -6,11 +6,7 @@ async function loadNavbar() {
 
     const navHTML = `
       <nav>
-        <h1><strong>ยินดีต้อนรับสู่ Dashboard ของ ระบบยืม-คืนอุปกรณ์</strong></h1>
-        <br>
-        <div>
-          <h2><strong>สวัสดี, คุณ ${user.name}</strong></h2> 
-        </div>
+        <h1><strong>ยินดีต้อนรับ คุณ ${user.name} สู่ ระบบยืม-คืนอุปกรณ์</strong></h1>
         <div>
           <ul>
             <li><button type="button" class="nav-btn" data-target="dashboard.html">🏠 ระบบยืมอุปกรณ์</button></li>

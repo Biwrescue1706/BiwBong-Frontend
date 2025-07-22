@@ -38,11 +38,9 @@ async function loadEquipments() {
       table.innerHTML += `
         <tr>
             <td data-label="ลำดับ">${index + 1}</td>
-            <td data-label="ID">${e.EID}</td>
             <td data-label="ชื่อ">${e.EName}</td>
             <td data-label="ทั้งหมด">${e.Total}</td>
             <td data-label="เหลือ">${e.Available}</td>
-            <td data-label="ยืม"></td>
             <td data-label="การจัดการ">
                 <button onclick="editEquipment('${e.EID}')">แก้ไข</button>
                 <button onclick="deleteEquipment('${e.EID}')">ลบ</button>

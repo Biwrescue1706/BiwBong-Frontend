@@ -3,23 +3,23 @@
 /* กำหนดพื้นหลังและขนาดของ navbar */
 #navbar nav {
   background-color: #2ff068bb;
-  padding: 20px 30px;
+  padding: 5px 5px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px #00000060;
   user-select: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* จัดหัวข้อใหญ่ */
 #navbar h1 {
-  font-size: 1.6rem;
+  font-size: 1.cm;
   margin-bottom: 8px;
   color: #000000;
 }
 
 /* หัวข้อรอง */
 #navbar h2 {
-  font-size: 1.3rem;
+  font-size: 1.cm;
   margin-bottom: 15px;
   color: #000000;
 }
@@ -42,11 +42,11 @@
 /* ปุ่มเมนู */
 #navbar button.nav-btn,
 #navbar button#logoutBtn {
-  background: none;
+  background: #ff1e00;
   border: none;
   padding: 8px 16px;
-  color: #ff1e00;
-  font-size: 1rem;
+  color: #ffffff;
+  font-size: 1.cm;
   cursor: pointer;
   border-radius: 6px;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -64,7 +64,7 @@
 }
 
 /* รองรับการแสดงผลบนหน้าจอเล็ก */
-@media (max-width: 750px) {
+@media (max-width: 250px) {
   #navbar ul {
     flex-direction: column;
     gap: 10px;
