@@ -44,16 +44,20 @@ async function loadEquipments() {
 
         equipments.forEach((e, index) => {
             const tr = document.createElement('tr');
+
+            const borrowBtn = e.Available > 0
+                ? `<button class="borrow-btn" onclick="borrowEquipment(${e.EID}, ${e.Available}, '${e.EName}')">ยืม</button>`
+                : `<span style="color:gray;"></span>`;
+
             tr.innerHTML = `
-          <td data-label="ลำดับ">${index + 1}</td>
-          <td data-label="ชื่อ">${e.EID}</td>
-          <td data-label="ชื่อ">${e.EName}</td>
-          <td data-label="ทั้งหมด">${e.Total}</td>
-          <td data-label="เหลือ">${e.Available}</td>
-          <td data-label="จัดการ">
-          <button class="borrow-btn" onclick="borrowEquipment(${e.EID}, ${e.Available})">ยืม</button>
-          </td>
-      `;
+                <td data-label="ลำดับ">${index + 1}</td>
+                <td data-label="ชื่อ">${e.EName}</td>
+                <td data-label="ทั้งหมด">${e.Total}</td>
+                <td data-label="เหลือ">${e.Available}</td>
+                <td data-label="จัดการ">
+                    ${borrowBtn}
+                </td>
+            `;
             tbody.appendChild(tr);
         });
     } catch (err) {

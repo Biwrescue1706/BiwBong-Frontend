@@ -11,8 +11,9 @@
 /* จัดหัวข้อใหญ่ */
 #navbar h1 {
   font-size: 30px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: #000000;
+  margin: auto 40px 20px;
 }
 
 /* หัวข้อรอง */
@@ -30,6 +31,7 @@
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 /* ลบ bullet และจัดลิสต์ให้อยู่ในแนวนอน */
@@ -49,6 +51,7 @@
   border-radius: 6px;
   transition: background-color 0.3s ease, color 0.3s ease;
   user-select: none;
+  margin-left: 10px;
 }
 
 /* เอฟเฟกต์เมื่อชี้ หรือ กดโฟกัส */
@@ -67,6 +70,7 @@
     flex-direction: column;
     gap: 10px;
   }
+
   #navbar button.nav-btn,
   #navbar button#logoutBtn {
     width: 100%;

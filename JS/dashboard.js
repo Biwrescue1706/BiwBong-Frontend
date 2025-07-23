@@ -56,6 +56,8 @@ async function loadEquipments() {
           <td data-label="เหลือ">${e.Available}</td>
           <td data-label="จัดการ">
             <button onclick="editEquipment('${e.EID}')">แก้ไข</button>
+          </td>
+          <td data-label="จัดการ">
             <button onclick="deleteEquipment('${e.EID}')">ลบ</button>
           </td>
         </tr>

@@ -1,0 +1,72 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #46e2a1;
+  color: #000000;
+  padding: 20px;
+}
+
+/* กล่องหลัก */
+.container {
+  max-width: 960px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* หัวเรื่อง */
+h1 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+/* ตาราง */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+thead {
+  background-color: #53ff04;
+  color: #000000; /* หรือสีดำ ถ้ามองเห็นง่าย */
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #000000;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  th {
+    display: none;
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  td::before {
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #555;
+    content: attr(data-label);
+  }
+}

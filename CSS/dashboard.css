@@ -7,7 +7,7 @@ body {
 }
 
 .dashboard-container {
-  background-color: #ffffff;
+  background-color: #e6dede;
   padding: 40px 50px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -17,23 +17,24 @@ body {
 }
 
 h1 {
-  margin-bottom: 24px;
   color: #000000;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 30px;
+  margin: auto auto 20px;
 }
 
 #addEquipmentBtn {
-  background-color: #0d6efd;
+  background-color: #ff7b00;
   color: white;
   border: none;
   padding: 10px 18px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 15px;
+  font-size: 20px;
+  margin-bottom: 10px;
   transition: background-color 0.3s ease;
 }
+
 #addBtn:hover {
   background-color: #084298;
 }
@@ -41,7 +42,7 @@ h1 {
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
+  background-color: #ffffff;
   box-shadow: 0 0 10px #000000;
   border-radius: 8px;
   overflow: hidden;
@@ -50,17 +51,19 @@ table {
 
 thead {
   background-color: #53ff04;
-  color: white;
+  color: #000000;
+  font-weight: 700;
 }
 
-th, td {
+th,
+td {
   padding: 12px 15px;
   text-align: center;
   border-bottom: 1px solid #ddd;
 }
 
 th.fd {
-  width: 60px;
+  width: auto;
 }
 
 tbody tr:hover {
@@ -72,17 +75,21 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  color: white;
-  font-size: 14px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
   margin: 2px;
   transition: background-color 0.3s ease;
 }
+
 button:hover {
   opacity: 0.85;
 }
+
 button[onclick*="editEquipment"] {
-  background-color: #0dcaf0;
+  background-color: #2fc22f;
 }
+
 button[onclick*="deleteEquipment"] {
   background-color: #dc3545;
 }
@@ -93,7 +100,12 @@ button[onclick*="deleteEquipment"] {
     padding: 0 10px;
   }
 
-  table, thead, tbody, th, td, tr {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
     display: block;
   }
 
@@ -134,7 +146,7 @@ button[onclick*="deleteEquipment"] {
   }
 
   button {
-    font-size: 13px;
+    font-size: 20px;
     padding: 6px 10px;
   }
 }
