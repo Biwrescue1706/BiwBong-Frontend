@@ -84,8 +84,10 @@ async function loadUsers() {
           <td data-label="ชื่อ">${user.name || '-'}</td>
           <td data-label="วันที่สร้าง">${user.Created_At ? formatDateThai(user.Created_At) : '-'}</td>
           <td data-label="วันที่แก้ไข">${user.Update_At ? formatDateThai(user.Update_At) : '-'}</td>
-          <td>
+          <td data-label="แก้ไข">
             <button class="editUser" onclick="editUser('${user.UserId}', '${escapeQuotes(user.username)}', '${escapeQuotes(user.name)}')">แก้ไข</button>
+           </td>
+           <td data-label="ลบ">
             <button class="deleteUser" onclick="deleteUser('${user.UserId}')">ลบ</button>
           </td>
         </tr>
