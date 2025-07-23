@@ -1,8 +1,3 @@
-/* === Reset พื้นฐาน === */
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #46e2a1;
