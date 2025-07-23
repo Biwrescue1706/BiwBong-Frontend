@@ -40,23 +40,16 @@ async function loadReturns() {
     const tbody = document.getElementById('returnsTableBody');
     tbody.innerHTML = '';
 
-    if (returns.length === 0) {
-      const row = document.createElement('tr');
-      row.innerHTML = `<td colspan="6" style="text-align:center;">ไม่มีข้อมูล</td>`;
-      tbody.appendChild(row);
-      return;
-    }
-
     returns.forEach((r, index) => {
       const tr = document.createElement('tr');
 
       tr.innerHTML = `
         <td data-label="ลำดับ">${index + 1}</td>
         <td data-label="ชื่อผู้ดำเนินการ">${r.name || '-'}</td>
-        <td data-label="ชื่อผู้ยืม	">${r.names}</td>
+        <td data-label="ชื่อผู้ยืม	">${r.names || '-'}</td>
         <td data-label="ชื่ออุปกรณ์">${r.Ename || '-'}</td>
-        <td data-label="จำนวนที่คืน	" >${r.Quantity}</td>
-        <td data-label="วันที่คืน">${formatDateThai(r.ReturnDate)}</td>
+        <td data-label="จำนวนที่คืน	" >${r.Quantity || '-'}</td>
+        <td data-label="วันที่คืน">${formatDateThai(r.ReturnDate) ||'-'}</td>
       `;
 
       tbody.appendChild(tr);
