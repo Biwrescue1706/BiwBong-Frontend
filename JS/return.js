@@ -42,7 +42,7 @@ async function loadReturns() {
 
     if (returns.length === 0) {
       const row = document.createElement('tr');
-      row.innerHTML = `<td colspan="5" style="text-align:center;">ไม่มีข้อมูล</td>`;
+      row.innerHTML = `<td colspan="6" style="text-align:center;">ไม่มีข้อมูล</td>`;
       tbody.appendChild(row);
       return;
     }
