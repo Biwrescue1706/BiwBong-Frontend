@@ -18,7 +18,7 @@ async function checkLogin() {
     }
 
     return user;
-    
+
   } catch (err) {
     console.warn('ยังไม่ได้เข้าสู่ระบบ:', err.message);
     Swal.fire({
@@ -42,7 +42,7 @@ async function loadEquipments() {
 
     const equipments = await res.json();
 
-equipments.sort((a, b) => a.EName.localeCompare(b.EName, 'th', { sensitivity: 'base' }));
+    equipments.sort((a, b) => a.EName.localeCompare(b.EName, 'th', { sensitivity: 'base' }));
 
     const table = document.getElementById('equipmentTableBody');
     table.innerHTML = '';
@@ -62,7 +62,6 @@ equipments.sort((a, b) => a.EName.localeCompare(b.EName, 'th', { sensitivity: 'b
       `;
     });
   } catch (err) {
-    console.error('โหลดข้อมูลอุปกรณ์ล้มเหลว', err);
     Swal.fire({
       icon: 'error',
       title: 'โหลดข้อมูลอุปกรณ์ล้มเหลว',

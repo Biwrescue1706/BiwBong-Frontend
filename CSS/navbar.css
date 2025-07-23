@@ -1,6 +1,4 @@
 /* navbar.css */
-
-/* กำหนดพื้นหลังและขนาดของ navbar */
 #navbar nav {
   background-color: #2ff068bb;
   padding: 5px 5px;
@@ -12,7 +10,7 @@
 
 /* จัดหัวข้อใหญ่ */
 #navbar h1 {
-  font-size: 1.cm;
+  font-size: 30px;
   margin-bottom: 8px;
   color: #000000;
 }

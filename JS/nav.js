@@ -13,6 +13,7 @@ async function loadNavbar() {
             <li><button type="button" class="nav-btn" data-target="borrow.html">📦 ยืมอุปกรณ์</button></li>
             <li><button type="button" class="nav-btn" data-target="return.html">🔁 คืนอุปกรณ์</button></li>
             <li><button type="button" class="nav-btn" data-target="profile.html">จัดการ User</button></li>
+            <li><button type="button" class="nav-btn" data-target="borrow-history.html">ประวัติการยืม</button></li>
             <li><button type="button" id="logoutBtn">🚪 ออกจากระบบ</button></li>
           </ul>
         </div>

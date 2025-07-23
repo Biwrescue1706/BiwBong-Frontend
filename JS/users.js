@@ -40,9 +40,27 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'ไม่สามารถสมัครสมาชิกได้');
-      Swal.fire('สำเร็จ!', 'สมัครสมาชิกเรียบร้อยแล้ว', 'success').then(loadUsers);
+
+      if (res.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'เพิ่มสมาชิกสำเร็จเรียบร้อยแล้ว',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+        loadUsers();
+      } else {
+        const errorData = await res.json();
+        Swal.fire({
+          icon: 'error',
+          title: 'เพิ่มสมาชิกไม่สำเร็จ',
+        });
+      }
     } catch (err) {
-      Swal.fire('ผิดพลาด', err.message, 'error');
+      Swal.fire({
+        icon: 'error',
+        title: 'เกิดข้อผิดพลาด',
+      });
     }
   });
 });
@@ -67,14 +85,17 @@ async function loadUsers() {
           <td>${user.Created_At ? formatDateThai(user.Created_At) : '-'}</td>
           <td>${user.Update_At ? formatDateThai(user.Update_At) : '-'}</td>
           <td>
-            <button onclick="editUser('${user.UserId}', '${escapeQuotes(user.username)}', '${escapeQuotes(user.name)}')">แก้ไข</button>
-            <button onclick="deleteUser('${user.UserId}')">ลบ</button>
+            <button class="editUser" onclick="editUser('${user.UserId}', '${escapeQuotes(user.username)}', '${escapeQuotes(user.name)}')">แก้ไข</button>
+            <button class="deleteUser" onclick="deleteUser('${user.UserId}')">ลบ</button>
           </td>
         </tr>
       `;
     });
   } catch (err) {
-    Swal.fire('เกิดข้อผิดพลาด', err.message, 'error');
+    Swal.fire({
+      icon: 'error',
+      title: 'เกิดข้อผิดพลาด',
+    });
   }
 }
 
@@ -125,10 +146,27 @@ window.editUser = async (id, oldUsername, oldName) => {
     });
 
     if (!res.ok) throw new Error('แก้ไขไม่สำเร็จ');
-
-    Swal.fire('สำเร็จ!', 'ข้อมูลถูกอัปเดตแล้ว', 'success').then(loadUsers);
+    if (res.ok) {
+      Swal.fire({
+        icon: 'success',
+        title: 'ข้อมูลถูกอัปเดตแล้ว',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      loadUsers();
+    } else {
+      const errorData = await res.json();
+      Swal.fire({
+        icon: 'error',
+        title: 'ข้อมูลไม่ถูกอัปเดต',
+      });
+    }
   } catch (err) {
-    Swal.fire('ผิดพลาด', err.message, 'error');
+    Swal.fire({
+      icon: 'error',
+      title: 'เกิดข้อผิดพลาด',
+      text: errorData.message,
+    });
   }
 };
 
@@ -153,10 +191,10 @@ window.deleteUser = async (id) => {
 
     if (!res.ok) throw new Error('ลบไม่สำเร็จ');
 
-        if (res.ok) {
+    if (res.ok) {
       Swal.fire({
         icon: 'success',
-        title: 'เพิ่มอุปกรณ์สำเร็จ',
+        title: 'ลบผู้ใช้สำเร็จ',
         timer: 1500,
         showConfirmButton: false,
       });
@@ -166,10 +204,15 @@ window.deleteUser = async (id) => {
       Swal.fire({
         icon: 'error',
         title: 'เกิดข้อผิดพลาด',
-        text: errorData.message || 'ไม่สามารถเพิ่มอุปกรณ์ได้',
+        text: errorData.message || 'ไม่สามารถลบผู้ใช้ได้',
       });
-    } 
+    }
   } catch (err) {
-    Swal.fire('ผิดพลาด', err.message, 'error');
+    Swal.fire({
+      icon: 'error',
+      title: 'เกิดข้อผิดพลาด',
+      text: errorData.message,
+    });
+
   }
 };

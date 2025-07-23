@@ -5,129 +5,171 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
+  background-color: #46e2a1;
+  margin: 10px;
   padding: 20px;
-  color: #333;
+  color: #000000;
+}
+
+/* === container หลัก === */
+.profile-container {
+  max-width: 900px;
+  margin: 20px auto;
+  background: white;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px #0000001a;
 }
 
 /* === หัวข้อหลัก === */
 h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #2c3e50;
+  font-weight: 600;
+  font-size: 35px;
+  color: #000000;
+}
+
+/* === ปุ่มเพิ่มสมาชิก === */
+#addUserBtn {
+  background-color: #28a745;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
+  user-select: none;
+  display: block;
+  margin: 0 auto 15px auto;
+  text-align: center;
+}
+
+#addUserBtn:hover {
+  background-color: #218838;
 }
 
 /* === ตาราง === */
-table {
+#usersTable {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
   font-size: 15px;
-  background-color: #ffffff;
+  text-align: left;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
+  background-color: white;
 }
 
 /* === หัวตาราง === */
-thead {
-  background-color: #20c997;
+#usersTable thead {
+  background-color: #007bff;
   color: white;
 }
 
-thead th {
+#usersTable thead th {
   padding: 12px 15px;
-  text-align: left;
   font-weight: 600;
+  border: 1px solid #ddd;
 }
 
 /* === แถวข้อมูล === */
-tbody tr:nth-child(even) {
-  background-color: #f2f6fc;
+#usersTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
-tbody tr:hover {
-  background-color: #dbe9fb;
+#usersTable tbody tr:hover {
+  background-color: #e9f2fb;
   cursor: default;
 }
 
-tbody td {
+#usersTable tbody td {
   padding: 12px 15px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
+  vertical-align: middle;
 }
 
-/* === ปุ่มจัดการ === */
-button {
-  margin: 2px;
-  padding: 6px 12px;
-  background-color: #0d6efd;
+/* === ปุ่มจัดการในตาราง === */
+button.manage-btn {
+  background-color: #ffc107;
   border: none;
-  color: white;
+  color: #212529;
+  padding: 6px 12px;
+  font-size: 14px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
+  margin-right: 6px;
   transition: background-color 0.3s ease;
+  user-select: none;
 }
 
-button:hover {
-  background-color: #0b5ed7;
+button.manage-btn:hover {
+  background-color: #e0a800;
 }
 
-/* ปุ่มแก้ไข (editUser) */
+/* === ปุ่มแก้ไข === */
 button.editUser {
   background-color: #ff0707;
-  color: #212529;
+  /* สีแดงสด */
+  color: white;
+  /* ตัวหนังสือสีขาว เพื่อความชัดเจน */
   border: none;
   border-radius: 4px;
   padding: 6px 12px;
-  margin: 2px;
+  margin: 2px 4px 2px 0;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s ease;
+  user-select: none;
 }
 
 button.editUser:hover {
-  background-color: #ff070791;
-  color: white;
+  background-color: #cc0505;
+  /* สีแดงเข้มขึ้นเวลาชี้ */
 }
 
-/* ปุ่มลบ (deleteUser) */
+/* ปุ่มลบ */
 button.deleteUser {
-  background-color: #dc3545;
-  /* สีแดง */
-  color: white;
+  background-color: #14cc14;
+  /* สีแดงเข้ม */
+  color: rgb(5, 5, 5);
   border: none;
   border-radius: 4px;
   padding: 6px 12px;
-  margin: 2px;
+  margin: 2px 0 2px 4px;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s ease;
+  user-select: none;
 }
 
 button.deleteUser:hover {
-  background-color: #bb2d3b;
+  background-color: #043804;
+  color: #ffffff;
+
 }
 
-
 /* === Responsive สำหรับหน้าจอเล็ก === */
-@media (max-width: 250px) {
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 15px 20px;
+  }
 
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
+  #usersTable thead,
+  #usersTable tbody,
+  #usersTable tr,
+  #usersTable th,
+  #usersTable td {
     display: block;
   }
 
-  thead {
+  #usersTable thead tr {
     display: none;
   }
 
-  tr {
+  #usersTable tr {
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -135,24 +177,39 @@ button.deleteUser:hover {
     background-color: #fff;
   }
 
-  td {
+  #usersTable td {
     text-align: right;
     padding-left: 50%;
     position: relative;
+    border: none;
+    border-bottom: 1px solid #eee;
   }
 
-  td::before {
+  #usersTable td::before {
     content: attr(data-label);
     position: absolute;
     left: 15px;
     width: 45%;
     padding-left: 10px;
-    font-weight: bold;
+    font-weight: 600;
     text-align: left;
     color: #333;
   }
 
-  button.editUser {
-    background-color: #ff0707;
+  #addUserBtn {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+/* === Responsive สำหรับหน้าจอเล็กมาก ≤ 250px === */
+@media screen and (max-width: 250px) {
+  #addUserBtn {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  #usersTable td::before {
+    font-size: 14px;
   }
 }
