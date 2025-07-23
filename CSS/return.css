@@ -43,8 +43,7 @@ th, td {
     border: 1px solid #000000;
 }
 
-/* Responsive */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 480px) {
   table, thead, tbody, th, td, tr {
     display: block;
   }
