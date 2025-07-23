@@ -8,7 +8,7 @@ body {
 
 /* === container หลัก === */
 .profile-container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 20px auto;
   background: white;
   padding: 25px 30px;
