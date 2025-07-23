@@ -151,8 +151,7 @@ button.deleteUser:hover {
 
 }
 
-/* === Responsive สำหรับหน้าจอเล็ก === */
-@media (max-width: 600px) {
+@media screen and (max-width: 250px) {
   .profile-container {
     padding: 15px 20px;
   }
@@ -202,14 +201,3 @@ button.deleteUser:hover {
   }
 }
 
-/* === Responsive สำหรับหน้าจอเล็กมาก ≤ 250px === */
-@media screen and (max-width: 250px) {
-  #addUserBtn {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
-
-  #usersTable td::before {
-    font-size: 14px;
-  }
-}
