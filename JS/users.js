@@ -78,12 +78,12 @@ async function loadUsers() {
     users.forEach((user, index) => {
       tbody.innerHTML += `
         <tr>
-          <td>${index + 1}</td>
-          <td>${user.UserId}</td>
-          <td>${user.username || '-'}</td>
-          <td>${user.name || '-'}</td>
-          <td>${user.Created_At ? formatDateThai(user.Created_At) : '-'}</td>
-          <td>${user.Update_At ? formatDateThai(user.Update_At) : '-'}</td>
+          <td data-label="ลำดับ">${index + 1}</td>
+          <td data-label="UserId">${user.UserId}</td>
+          <td data-label="Username">${user.username || '-'}</td>
+          <td data-label="ชื่อ">${user.name || '-'}</td>
+          <td data-label="วันที่สร้าง">${user.Created_At ? formatDateThai(user.Created_At) : '-'}</td>
+          <td data-label="วันที่แก้ไข">${user.Update_At ? formatDateThai(user.Update_At) : '-'}</td>
           <td>
             <button class="editUser" onclick="editUser('${user.UserId}', '${escapeQuotes(user.username)}', '${escapeQuotes(user.name)}')">แก้ไข</button>
             <button class="deleteUser" onclick="deleteUser('${user.UserId}')">ลบ</button>
