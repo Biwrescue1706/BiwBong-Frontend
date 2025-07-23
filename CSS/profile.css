@@ -164,7 +164,7 @@ button.deleteUser:hover {
   }
 
   #usersTable tr {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 10px;
@@ -177,6 +177,8 @@ button.deleteUser:hover {
     position: relative;
     border: none;
     border-bottom: 1px solid #eee;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   #usersTable td::before {
@@ -190,9 +192,18 @@ button.deleteUser:hover {
     color: #333;
   }
 
+  button.manage-btn,
+  button.editUser,
+  button.deleteUser {
+    font-size: 12px;
+    padding: 5px 8px;
+    margin: 2px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   #addUserBtn {
     width: 100%;
     font-size: 16px;
   }
 }
-
