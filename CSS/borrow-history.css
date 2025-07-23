@@ -80,8 +80,7 @@ tr.not-returned-row {
   background-color: #e68900;
 }
 
-/* ---------- Responsive Table ---------- */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
   table,
   thead,
   tbody,
