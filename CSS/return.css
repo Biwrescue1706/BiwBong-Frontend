@@ -7,6 +7,11 @@ body {
 
 /* กล่องหลัก */
 .container {
+  max-width: 1000px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 30px;
+
     background-color: #e6dede;
   padding: 40px 50px;
   border-radius: 12px;
@@ -27,6 +32,43 @@ h1 {
 table {
   width: 100%;
   border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 15px auto;
+}
+
+thead {
+  background-color: #53ff04;
+  color: #000000;
+}
+
+th,
+td {
+  padding: 12px;
+  border: 1px solid #000000;
+  text-align: left;
+  font-size: 1rem;
+}
+
+/* ========== Responsive Design ========== */
+
+/* ✅ มือถือจอเล็ก (<= 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+    padding: 8px;
+    width: 60%;
+    justify-self: center;
+  }
+
+  table {
+    font-size: 16px;
   background-color: #ffffff;
   box-shadow: 0 0 10px #000000;
   border-radius: 8px;
@@ -52,8 +94,11 @@ th, td {
 }
   table, thead, tbody, th, td, tr {
     display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: normal;
+    margin: 10px auto 10px;
   }
-
   thead tr {
     position: absolute;
     top: -9999px;
@@ -89,4 +134,74 @@ th, td {
     color: #20c997;
     white-space: nowrap;
   }
+}
+
+/* ✅ แท็บเล็ต (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  th,
+  td {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  table {
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: normal;
+    margin: 10px auto 10px;
+  }
+
+}
+
+/* ✅ แล็ปท็อป/เดสก์ท็อปกลาง (769px - 1279px) */
+@media (min-width: 769px) and (max-width: 1279px) {
+  .container {
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  th,
+  td {
+    font-size: 1rem;
+  }
+
+  table {
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: normal;
+    margin: 10px auto 10px;
+  }
+
+}
+
+/* ✅ จอใหญ่พิเศษ (>= 1280px) */
+@media (min-width: 1280px) {
+  .container {
+    padding: 30px 40px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  th,
+  td {
+    font-size: 1.05rem;
+  }
+}
 }
