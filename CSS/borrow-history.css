@@ -87,10 +87,6 @@ tr.not-returned-row {
   background-color: #e68900;
 }
 
-/* =========================
-   📱 Responsive Styles
-   ========================= */
-
 /* มือถือเล็ก (ต่ำกว่า 480px) */
 @media (max-width: 480px) {
   .container {

@@ -11,14 +11,8 @@ body {
   margin: 30px auto;
   background: #fff;
   padding: 30px;
-
-    background-color: #e6dede;
-  padding: 40px 50px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 1000px;
-  margin: 20px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* หัวเรื่อง */
@@ -62,78 +56,20 @@ td {
 
   h1 {
     font-size: 20px;
-    padding: 8px;
+    padding: 8px ;
     width: 60%;
     justify-self: center;
   }
 
   table {
     font-size: 16px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px #000000;
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 15px 0;
-}
-
-thead {
-   background-color: #53ff04;
-  color: #000000;
-  font-weight: 700;
-}
-
-th, td {
-  padding: 12px 15px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-@media screen and (max-width: 750px) {
-  .container{
-   padding: 0 10px;
-}
-  table, thead, tbody, th, td, tr {
     display: block;
-    width: 100%;
-    overflow-x: auto;
-    white-space: normal;
+    width: 95%;
+    overflow-x: auto ;
+    white-space: normal ;
     margin: 10px auto 10px;
   }
-  thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
 
-  tbody tr {
-    border: 1px solid #ccc;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: white;
-  }
-
-  tbody tr:hover {
-    background-color: #e0f7f4;
-  }
-
-  td {
-    border: none;
-    padding-left: 50%;
-    position: relative;
-    text-align: left;
-    font-size: 14px;
-  }
-
-  td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 15px;
-    top: 12px;
-    font-weight: 600;
-    color: #20c997;
-    white-space: nowrap;
-  }
 }
 
 /* ✅ แท็บเล็ต (481px - 768px) */
@@ -151,16 +87,6 @@ th, td {
     font-size: 1rem;
     padding: 10px;
   }
-
-  table {
-    font-size: 16px;
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    white-space: normal;
-    margin: 10px auto 10px;
-  }
-
 }
 
 /* ✅ แล็ปท็อป/เดสก์ท็อปกลาง (769px - 1279px) */
@@ -177,16 +103,6 @@ th, td {
   td {
     font-size: 1rem;
   }
-
-  table {
-    font-size: 16px;
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    white-space: normal;
-    margin: 10px auto 10px;
-  }
-
 }
 
 /* ✅ จอใหญ่พิเศษ (>= 1280px) */
@@ -203,5 +119,4 @@ th, td {
   td {
     font-size: 1.05rem;
   }
-}
 }

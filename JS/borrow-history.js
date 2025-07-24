@@ -1,34 +1,10 @@
 import { formatDateThai } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadNavbar();
     await checkLogin();
+    await loadNavbar();
     loadBorrowHistory();
 });
-// ตรวจสอบ login ถ้าไม่ login จะ redirect ไปหน้า login
-async function checkLogin() {
-    try {
-        const user = await fetchUserProfile();
-
-        const usernameEl = document.getElementById('username');
-        if (usernameEl) {
-            usernameEl.textContent = user.Username || user.name || 'ไม่มีชื่อ';
-        }
-
-        return user;
-
-    } catch (err) {
-        console.warn('ยังไม่ได้เข้าสู่ระบบ:', err.message);
-        Swal.fire({
-            icon: 'error',
-            title: 'กรุณาเข้าสู่ระบบก่อนใช้งาน',
-            timer: 1500,
-            showConfirmButton: false,
-        }).then(() => {
-            window.location.href = 'index.html';
-        });
-    }
-}
 
 async function loadBorrowHistory() {
     try {
@@ -55,7 +31,7 @@ async function loadBorrowHistory() {
                 <td data-label="จำนวน">${e.Quantity}</td>
                 <td data-label="วันที่ยืม">${formatDateThai(e.Date)}</td>
                 <td data-label="วันที่คืน">${e.ReturnDate ? formatDateThai(e.ReturnDate) : '-'}</td>
-                <td data-label="สถานะ">${isReturned 
+                <td data-label="สถานะ">${isReturned
                     ? '<span class="returned">คืนแล้ว</span>'
                     : `<button class="return-btn" onclick="returnEquipment(${e.BorrowID}, ${e.Quantity - (e.ReturnedQuantity || 0)})">คืน</button>`
                 }

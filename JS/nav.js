@@ -9,12 +9,12 @@ async function loadNavbar() {
         <h1><strong>ยินดีต้อนรับ คุณ ${user.name} สู่ ระบบยืม-คืนอุปกรณ์</strong></h1>
         <div>
           <ul>
-            <li><button type="button" class="nav-btn" data-target="dashboard.html">🏠 ระบบยืมอุปกรณ์</button></li>
-            <li><button type="button" class="nav-btn" data-target="borrow.html">📦 ยืมอุปกรณ์</button></li>
-            <li><button type="button" class="nav-btn" data-target="return.html">🔁 คืนอุปกรณ์</button></li>
-            <li><button type="button" class="nav-btn" data-target="profile.html">จัดการ User</button></li>
-            <li><button type="button" class="nav-btn" data-target="borrow-history.html">ประวัติการยืม</button></li>
-            <li><button type="button" id="logoutBtn">🚪 ออกจากระบบ</button></li>
+          <li><button type="button" class="nav-btn" data-target="dashboard.html"><i class="fas fa-box"></i> อุปกรณ์</button></li>
+          <li><button type="button" class="nav-btn" data-target="borrow.html"><i class="fas fa-hand-paper"></i> ยืม</button></li>
+          <li><button type="button" class="nav-btn" data-target="profile.html"><i class="fas fa-user-cog"></i> จัดการ ผู้ใช้งาน</button></li>
+          <li><button type="button" class="nav-btn" data-target="borrow-history.html"><i class="fas fa-history"></i> ประวัติการยืม</button></li>
+          <li><button type="button" class="nav-btn" data-target="return.html"><i class="fas fa-undo"></i> ประวัติการคืน</button></li>
+          <li><button type="button" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</button></li>
           </ul>
         </div>
       </nav>

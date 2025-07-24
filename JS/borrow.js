@@ -3,29 +3,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadNavbar();
     loadEquipments();
 });
-async function checkLogin() {
-    try {
-        const user = await fetchUserProfile();
-
-        const usernameEl = document.getElementById('username');
-        if (usernameEl) {
-            usernameEl.textContent = user.Username || user.name || 'ไม่มีชื่อ';
-        }
-
-        return user;
-
-    } catch (err) {
-        console.warn('ยังไม่ได้เข้าสู่ระบบ:', err.message);
-        Swal.fire({
-            icon: 'error',
-            title: 'กรุณาเข้าสู่ระบบก่อนใช้งาน',
-            timer: 1500,
-            showConfirmButton: false,
-        }).then(() => {
-            window.location.href = 'index.html';
-        });
-    }
-}
 
 async function loadEquipments() {
     try {

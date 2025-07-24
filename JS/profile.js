@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     const user = await fetchUserProfile();
