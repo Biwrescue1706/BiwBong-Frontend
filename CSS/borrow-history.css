@@ -1,3 +1,8 @@
+/* ---------- Reset & Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #46e2a1;
@@ -25,13 +30,13 @@ h1 {
 
 /* ---------- Table ---------- */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 15px 0;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 15px 0;
 }
 
 thead {
@@ -41,8 +46,10 @@ thead {
 
 th,
 td {
-    padding: 12px;
-    border: 1px solid #000000;
+  padding: 12px;
+  border: 1px solid #000000;
+  text-align: center;
+  font-size: 16px;
 }
 
 tr:nth-child(even) {
@@ -80,51 +87,63 @@ tr.not-returned-row {
   background-color: #e68900;
 }
 
-@media screen and (max-width: 480px) {
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    display: block;
-    width: 100%;
+/* =========================
+   📱 Responsive Styles
+   ========================= */
+
+/* มือถือเล็ก (ต่ำกว่า 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
   }
 
-  thead {
-    display: none;
+  th, td {
+    padding: 8px;
+    font-size: 13px;
   }
 
-  tr {
-    margin-bottom: 15px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+  h1 {
+    font-size: 20px;
+  }
+
+  .return-btn {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+}
+
+/* แท็บเล็ต (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  th, td {
     padding: 10px;
+    font-size: 14px;
   }
 
-  td {
-    text-align: right;
-    padding-left: 50%;
-    position: relative;
-    border: none;
+  h1 {
+    font-size: 22px;
   }
 
-  td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 10px;
-    width: 45%;
-    white-space: nowrap;
-    font-weight: bold;
-    text-align: left;
-    color: #20c997;
+  .return-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+}
+
+/* เดสก์ท็อปใหญ่ (1280px ขึ้นไป) */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
   }
 
-  .returned,
-  .not-returned {
-    display: block;
-    text-align: left;
-    margin-top: 5px;
+  th, td {
+    font-size: 17px;
+  }
+
+  h1 {
+    font-size: 26px;
   }
 }
