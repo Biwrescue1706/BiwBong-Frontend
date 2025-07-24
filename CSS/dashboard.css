@@ -98,6 +98,7 @@ button[onclick*="deleteEquipment"] {
   .dashboard-container {
     padding: 20px 15px;
     margin: 10px;
+    width: 70%;
   }
 
   h1 {
@@ -154,6 +155,7 @@ button[onclick*="deleteEquipment"] {
   .dashboard-container {
     padding: 30px 30px;
     max-width: 720px;
+    width: 80%;
   }
 
   h1 {
@@ -170,6 +172,7 @@ button[onclick*="deleteEquipment"] {
 @media (min-width: 769px) and (max-width: 1279px) {
   .dashboard-container {
     max-width: 900px;
+    width: 90%;
   }
 
   h1 {
@@ -180,5 +183,6 @@ button[onclick*="deleteEquipment"] {
 @media (min-width: 1280px) {
   .dashboard-container {
     max-width: 1000px;
+    width: 100%;
   }
 }
