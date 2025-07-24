@@ -94,59 +94,91 @@ button[onclick*="deleteEquipment"] {
   background-color: #dc3545;
 }
 
-/* Responsive */
-@media screen and (max-width: 250px) {
+@media (max-width: 480px) {
   .dashboard-container {
-    padding: 0 10px;
+    padding: 20px 15px;
+    margin: 10px;
   }
 
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
+  h1 {
+    font-size: 22px;
+  }
+
+  #addEquipmentBtn {
+    font-size: 16px;
+    padding: 8px 12px;
+    width: 100%;
+  }
+
+  table, thead, tbody, th, td, tr {
     display: block;
   }
 
-  thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
+  thead {
+    display: none; /* ซ่อน header ตารางบนมือถือ */
   }
 
   tbody tr {
-    border: 1px solid #ccc;
     margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 10px;
-    border-radius: 10px;
-    background-color: white;
+    background-color: #fff;
   }
 
-  tbody tr:hover {
-    background-color: #e0f7f4;
-  }
-
-  td {
-    border: none;
+  tbody tr td {
+    text-align: right;
     padding-left: 50%;
     position: relative;
-    text-align: left;
-    font-size: 14px;
   }
 
-  td::before {
+  tbody tr td::before {
     content: attr(data-label);
     position: absolute;
     left: 15px;
-    top: 12px;
-    font-weight: 600;
-    color: #20c997;
-    white-space: nowrap;
+    width: 45%;
+    padding-left: 10px;
+    font-weight: 700;
+    text-align: left;
   }
 
   button {
-    font-size: 20px;
+    font-size: 14px;
     padding: 6px 10px;
+    margin-top: 5px;
+    width: 48%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .dashboard-container {
+    padding: 30px 30px;
+    max-width: 720px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  #addEquipmentBtn {
+    font-size: 18px;
+    padding: 9px 15px;
+    width: auto;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1279px) {
+  .dashboard-container {
+    max-width: 900px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .dashboard-container {
+    max-width: 1000px;
   }
 }

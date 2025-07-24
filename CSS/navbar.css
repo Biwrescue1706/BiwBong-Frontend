@@ -64,16 +64,71 @@
   outline: none;
 }
 
-/* รองรับการแสดงผลบนหน้าจอเล็ก */
-@media (max-width: 250px) {
+/* มือถือจอเล็ก */
+@media (max-width: 480px) {
+  #navbar h1 {
+    font-size: 20px;
+    margin: auto 10px 10px;
+  }
+
+  #navbar h2 {
+    font-size: 1rem;
+  }
+
   #navbar ul {
-    flex-direction: column;
+    flex-direction: row ;
     gap: 10px;
   }
 
   #navbar button.nav-btn,
   #navbar button#logoutBtn {
+    font-size: 0.9rem;
+    padding: 6px ;
     width: 100%;
-    text-align: left;
+  }
+}
+
+/* แท็บเล็ตแนวตั้ง - แนวนอน */
+@media (min-width: 481px) and (max-width: 768px) {
+  #navbar h1 {
+    font-size: 24px;
+  }
+
+  #navbar ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  #navbar button.nav-btn,
+  #navbar button#logoutBtn {
+    font-size: 1rem;
+    padding: 7px 14px;
+  }
+}
+
+/* แล็ปท็อป / เดสก์ท็อป */
+@media (min-width: 769px) and (max-width: 1279px) {
+  #navbar h1 {
+    font-size: 28px;
+  }
+
+  #navbar button.nav-btn,
+  #navbar button#logoutBtn {
+    font-size: 1rem;
+    padding: 8px;
+  }
+}
+
+/* จอใหญ่พิเศษ */
+@media (min-width: 1280px) {
+  #navbar h1 {
+    font-size: 32px;
+  }
+
+  #navbar button.nav-btn,
+  #navbar button#logoutBtn {
+    font-size: 1rem;
+    padding: 10px 18px;
   }
 }

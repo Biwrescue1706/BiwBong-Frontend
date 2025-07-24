@@ -55,60 +55,86 @@ th,td {
     background-color: #218838;
 }
 
-@media screen and (max-width: 250px) {
-    .container {
-        padding: 0 10px;
-    }
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 15px;
+    margin: 10px;
+  }
 
-    table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr {
-        display: block;
-        font-size: 8px;
-    }
+  h2 {
+    font-size: 1.4rem;
+  }
 
-    .borrow-btn {
-        font-size: 13px;
-        padding: 6px 10px;
-    }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
 
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
+  thead {
+    display: none; /* ซ่อน header ตารางบนมือถือ */
+  }
 
-    tbody tr {
-        border: 1px solid #ccc;
-        margin-bottom: 15px;
-        padding: 10px;
-        border-radius: 10px;
-        background-color: white;
-    }
+  tbody tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+  }
 
-    tbody tr:hover {
-        background-color: #e0f7f4;
-    }
+  tbody tr td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #ccc;
+  }
 
-    td {
-        border: none;
-        padding-left: 50%;
-        position: relative;
-        text-align: left;
-        font-size: 14px;
-    }
+  tbody tr td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    padding-left: 10px;
+    font-weight: 700;
+    text-align: left;
+  }
 
-    td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 15px;
-        top: 12px;
-        font-weight: 600;
-        color: #20c997;
-        white-space: nowrap;
-    }
+  .borrow-btn {
+    font-size: 14px;
+    padding: 8px 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
 
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding: 30px 30px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .borrow-btn {
+    font-size: 16px;
+    padding: 7px 14px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1279px) {
+  .container {
+    max-width: 900px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1000px;
+  }
 }

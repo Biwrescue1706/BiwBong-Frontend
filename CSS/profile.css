@@ -179,7 +179,6 @@ button.deleteUser:hover {
   }
 }
 
-/* === Responsive สำหรับแท็บเล็ต (481px - 768px) === */
 @media (min-width: 481px) and (max-width: 768px) {
   .profile-container {
     padding: 0 10px;
@@ -214,7 +213,6 @@ button.deleteUser:hover {
   }
 }
 
-/* === Responsive สำหรับแล็ปท็อป / เดสก์ท็อปขนาดกลาง (769px - 1279px) === */
 @media (min-width: 769px) and (max-width: 1279px) {
   .profile-container {
     padding: 25px 30px;
@@ -246,7 +244,6 @@ button.deleteUser:hover {
   }
 }
 
-/* === Responsive สำหรับจอใหญ่พิเศษ (1280px ขึ้นไป) === */
 @media (min-width: 1280px) {
   .profile-container {
     max-width: 1200px;
