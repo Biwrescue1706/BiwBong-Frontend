@@ -1,19 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    const user = await fetchUserProfile();
-
-    document.getElementById('username').value = user.Username || '';
-    document.getElementById('name').value = user.name || '';
-
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'กรุณาเข้าสู่ระบบก่อนใช้งาน',
-    }).then(() => {
-      window.location.href = 'index.html';
-    });
-  }
+    await checkLogin();
+    await loadNavbar();
+    loadEquipments();
 });
 
 document.getElementById('profileForm').addEventListener('submit', async (e) => {
