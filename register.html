@@ -7,22 +7,37 @@
   <link rel="stylesheet" href="CSS/register.css">
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="JS/auth.js"></script>
-  <script src="JS/register.js"></script>
+
 </head>
 
 <body>
   <div class="register-container">
+    <h1>ระบบจัดการอุปกรณ์</h1>
     <h2>สมัครสมาชิก</h2>
     <form id="registerForm">
+      <label for="username">ชื่อผู้ใช้งาน</label>
       <input type="text" name="username" placeholder="ชื่อผู้ใช้" required />
+      <label for="name">ชื่อ</label>
       <input type="text" name="name" placeholder="ชื่อ" required />
-      <input type="password" name="password" placeholder="รหัสผ่าน" required />
+
+      <label for="password">รหัสผ่าน</label>
+      <div class="password-container">
+        <input type="password" id="password" name="password" placeholder="รหัสผ่าน" required />
+        <span id="togglePassword" class="toggle-password">🙈</span>
+      </div>
+
+      <label for="confirmPassword">ยืนยันรหัสผ่านใหม่</label>
+      <div class="password-container">
+        <input type="password" id="confirmPassword" placeholder="ยืนยันรหัสผ่าน" required />
+        <span id="toggleConfirmPassword" class="toggle-password">🙈</span>
+      </div>
+
       <button type="submit">สมัครสมาชิก</button>
     </form>
-
   </div>
 
+  <script src="JS/auth.js"></script>
+  <script src="JS/register.js"></script>
 </body>
 
 </html>

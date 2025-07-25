@@ -9,17 +9,19 @@ body {
   margin: 10px;
   padding: 0;
   color: #000000;
+  margin-bottom: 20px;
 }
 
 /* === container หลัก === */
 .profile-container {
   background-color: #e6dede;
-  padding: 40px 50px;
+  padding: 10px 10px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 1000px;
-  margin: 20px auto;
+  margin: 10px auto ;
+
 }
 
 /* === หัวข้อหลัก === */
@@ -50,13 +52,13 @@ h2 {
 
 /* === ตาราง === */
 #usersTable {
-  width: 90%;
+  width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
   box-shadow: 0 0 10px #000000;
   border-radius: 8px;
   overflow: hidden;
-  margin: 15px 0;
+  margin: 15px auto;
 }
 
 /* === หัวตาราง === */
@@ -147,6 +149,7 @@ button.deleteUser:hover {
 @media (max-width: 480px) {
   .profile-container {
     padding: 0 10px;
+    width: 70%;
   }
 
   h2 {
@@ -164,7 +167,7 @@ button.deleteUser:hover {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
-    width: 100%;
+    width: 70%;
     margin: auto;
   }
 
@@ -175,47 +178,50 @@ button.deleteUser:hover {
     padding: 5px 10px;
     margin: 4px 0;
     display: block;
-    width: 100%;
+    width: 50%;
   }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
   .profile-container {
-    padding: 0 10px;
+    padding: 10px;
+    width: 80%;
+    margin: 10px auto;
   }
 
   h2 {
-    font-size: 35px;
-    padding: 8px 12px;
+    font-size: 25px;
+    padding: 2px;
     width: 50%;
     justify-self: center;
   }
 
   #addUserBtn {
-    font-size: 20px;
+    font-size: 16px;
     padding: 10px 16px;
   }
 
   #usersTable {
-    font-size: 16px;
+    font-size: 12px;
     display: block;
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;
-    margin: 10px auto 10px;
+    margin: 10px auto;
   }
 
   button.manage-btn,
   button.editUser,
   button.deleteUser {
-    font-size: 13px;
-    padding: 6px 12px;
+    font-size: 7.5px;
+    padding: 6px;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1279px) {
   .profile-container {
-    padding: 25px 30px;
+    padding: 5px;
+    width: 70%;
   }
 
   h2 {
@@ -246,31 +252,6 @@ button.deleteUser:hover {
 
 @media (min-width: 1280px) {
   .profile-container {
-    max-width: 1200px;
-  }
-
-  h2 {
-    font-size: 35px;
-  }
-
-  #addUserBtn {
-    font-size: 26px;
-    padding: 12px 24px;
-  }
-
-  #usersTable {
-    font-size: 16px;
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    margin: 10px auto 10px;
-  }
-
-  button.manage-btn,
-  button.editUser,
-  button.deleteUser {
-    font-size: 15px;
-    padding: 6px 12px;
+    max-width: 1000px;
   }
 }

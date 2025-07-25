@@ -1,60 +1,108 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #2ce78a;
+  background-color: #2ce78a;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
 }
 
 .register-container {
-  background: #baf874;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px #0000001a;
-  width: 320px;
+  background-color: #baf874;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.2);
+  width: 350px;
+  box-sizing: border-box;
   text-align: center;
 }
 
-.register-container h2 {
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.register-container input {
-  width: 100%;
-  padding: 0.5rem;
+h1,
+h2 {
   margin-bottom: 1rem;
-  border-radius: 4px;
-  border: 1px solid #000000;
+  font-weight: 700;
+  color: #000;
+}
+
+form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+form input[type="text"],
+form input[type="password"] {
+  width: 100%;
+  padding: 10px 14px;
   font-size: 1rem;
+  border: 1.5px solid #bdc3c7;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.4);
+}
+
+/* ครอบช่องรหัสผ่านกับไอคอน toggle */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* ปรับช่องใส่รหัสผ่านให้เว้นที่สำหรับไอคอน */
+.password-container input[type="password"] {
+  padding: 10px 40px 10px 14px;
+  /* เว้นที่ขวาสำหรับไอคอน */
+  width: 100%;
   box-sizing: border-box;
 }
 
-.register-container button {
-  width: 100%;
-  padding: 0.7rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+/* toggle icon (🙈 👁️) */
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  font-size: 1.2rem;
   cursor: pointer;
+  user-select: none;
+  color: #000000;
+  transform: translateY(-40%);
+  transition: color 0.3s ease;
 }
 
-.register-container button:hover {
-  background-color: #0056b3;
+.toggle-password:hover {
+  color: #000;
 }
 
-.register-container p {
-  text-align: center;
-  margin-top: 1rem;
+form button {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #20c997;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
-.register-container a {
-  color: #007bff;
-  text-decoration: none;
+form button:hover {
+  background-color: #1a7f63;
 }
 
 @media (max-width: 480px) {
@@ -63,9 +111,8 @@ body {
     padding: 1.5rem;
   }
 
-  .register-container input,
-  .register-container button {
-    font-size: 0.9rem;
+  form button {
+    font-size: 1rem;
   }
 }
 

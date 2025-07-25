@@ -1,11 +1,24 @@
 /* navbar.css */
 #navbar nav {
+  width: 1000px;
+  /* ✅ ความกว้างคงที่ */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #2ff068bb;
   padding: 5px 5px;
   border-radius: 8px;
   box-shadow: 0 2px 8px #00000060;
   user-select: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#navbar {
+  display: flex;
+  justify-content: center;
 }
 
 /* จัดหัวข้อใหญ่ */
@@ -31,6 +44,7 @@
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  justify-self: center;
   margin-bottom: 20px;
 }
 
@@ -66,6 +80,13 @@
 
 /* มือถือจอเล็ก */
 @media (max-width: 480px) {
+  #navbar nav {
+    width: 70%;
+    /* ✅ แทนที่ความกว้างคงที่ด้วย % */
+    padding: 1.5rem;
+    text-align: center;
+  }
+
   #navbar h1 {
     font-size: 20px;
     margin: auto 10px 10px;
@@ -76,28 +97,36 @@
   }
 
   #navbar ul {
-    flex-direction: row ;
+    flex-direction: column;
     gap: 10px;
+    width: 100%;
   }
 
   #navbar button.nav-btn,
   #navbar button#logoutBtn {
     font-size: 0.9rem;
-    padding: 6px ;
+    padding: 6px;
     width: 100%;
   }
 }
 
 /* แท็บเล็ตแนวตั้ง - แนวนอน */
 @media (min-width: 481px) and (max-width: 768px) {
+  #navbar nav {
+    width: 80%;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
   #navbar h1 {
     font-size: 24px;
   }
 
   #navbar ul {
     flex-direction: row;
-    flex-wrap: wrap;
     gap: 10px;
+    width: 100%;
+    margin: auto;
   }
 
   #navbar button.nav-btn,
@@ -109,6 +138,10 @@
 
 /* แล็ปท็อป / เดสก์ท็อป */
 @media (min-width: 769px) and (max-width: 1279px) {
+  #navbar nav {
+    width: 900px;
+  }
+
   #navbar h1 {
     font-size: 28px;
   }
@@ -122,6 +155,10 @@
 
 /* จอใหญ่พิเศษ */
 @media (min-width: 1280px) {
+  #navbar nav {
+    width: 1000px;
+  }
+
   #navbar h1 {
     font-size: 32px;
   }
