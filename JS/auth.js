@@ -81,18 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const togglePassword = document.getElementById('togglePassword');
   const toggleConfirm = document.getElementById('toggleConfirmPassword');
 
-  // toggle ช่องรหัสผ่าน
-  togglePassword.addEventListener('click', () => {
-    const isHidden = passwordInput.type === 'password';
-    passwordInput.type = isHidden ? 'text' : 'password';
-    togglePassword.textContent = isHidden ? '👁️' : '🙈';
-  });
+  if (togglePassword && passwordInput) {
+    togglePassword.addEventListener('click', () => {
+      const isHidden = passwordInput.type === 'password';
+      passwordInput.type = isHidden ? 'text' : 'password';
+      togglePassword.textContent = isHidden ? '👁️' : '🙈';
+    });
+  }
 
-  // toggle ช่องยืนยันรหัสผ่าน
-  toggleConfirm.addEventListener('click', () => {
-    const isHidden = confirmInput.type === 'password';
-    confirmInput.type = isHidden ? 'text' : 'password';
-    toggleConfirm.textContent = isHidden ? '👁️' : '🙈';
-  });
+  if (toggleConfirm && confirmInput) {
+    toggleConfirm.addEventListener('click', () => {
+      const isHidden = confirmInput.type === 'password';
+      confirmInput.type = isHidden ? 'text' : 'password';
+      toggleConfirm.textContent = isHidden ? '👁️' : '🙈';
+    });
+  }
 });
-

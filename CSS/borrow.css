@@ -7,52 +7,54 @@ body {
 }
 
 .container {
-    background-color: #ffffff;
-    padding: 40px 50px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 1000px;
-    margin: 20px auto;
+  background-color: #ffffff;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 1000px;
+  margin: 20px auto;
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 15px 0;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 15px 0;
 }
 
 thead {
   background-color: #53ff04;
-  color: #000000; /* หรือสีดำ ถ้ามองเห็นง่าย */
+  color: #000000;
+  /* หรือสีดำ ถ้ามองเห็นง่าย */
 }
 
-th,td {
-    padding: 12px;
-    border: 1px solid #000000;
+th,
+td {
+  padding: 12px;
+  border: 1px solid #000000;
 }
 
 .borrow-btn {
-    background-color: #00ff37;
-    color: #0a0303;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.45cm;
+  background-color: #00ff37;
+  color: #0a0303;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.45cm;
 }
 
 .borrow-btn:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
 @media (max-width: 480px) {
@@ -66,12 +68,18 @@ th,td {
     font-size: 1.4rem;
   }
 
-  table, thead, tbody, th, td, tr {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
     display: block;
   }
 
   thead {
-    display: none; /* ซ่อน header ตารางบนมือถือ */
+    display: none;
+    /* ซ่อน header ตารางบนมือถือ */
   }
 
   tbody tr {
