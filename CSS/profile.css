@@ -95,11 +95,10 @@ button.manage-btn {
   background-color: #ffc107;
   border: none;
   color: #000000;
-  padding: 6px 12px;
-  font-size: 14px;
+  padding: 6px;
+  font-size: 16px;
   border-radius: 4px;
   cursor: pointer;
-  margin-right: 6px;
   transition: background-color 0.3s ease;
   user-select: none;
 }
@@ -176,7 +175,7 @@ button.deleteUser:hover {
   button.deleteUser {
     font-size: 15px;
     padding: 5px 10px;
-    margin: 4px 0;
+    margin: 10px auto;
     display: block;
   }
 }
