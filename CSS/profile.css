@@ -20,7 +20,7 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 1000px;
-  margin: 10px auto ;
+  margin: 10px auto;
 
 }
 
@@ -129,11 +129,11 @@ button.editUser:hover {
 /* === ปุ่มลบ === */
 button.deleteUser {
   background-color: #14cc14;
-  color: rgb(5, 5, 5);
+  color: #ff0000;
   border: none;
   border-radius: 4px;
-  padding: 6px 12px;
-  margin: 2px 0 2px 4px;
+  padding: 6px;
+  margin: 2px auto;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s ease;
@@ -148,8 +148,8 @@ button.deleteUser:hover {
 /* === Responsive สำหรับหน้าจอเล็ก (มือถือเล็ก) === */
 @media (max-width: 480px) {
   .profile-container {
-    padding: 0 10px;
-    width: 70%;
+    padding: 5px;
+    max-width: 1000px;
   }
 
   h2 {
@@ -163,30 +163,28 @@ button.deleteUser:hover {
   }
 
   #usersTable {
-    font-size: 12px;
+    font-size: 16px;
     display: block;
+    width: 100%;
     overflow-x: auto;
     white-space: nowrap;
-    width: 70%;
-    margin: auto;
+    margin: 15px auto;
   }
 
   button.manage-btn,
   button.editUser,
   button.deleteUser {
-    font-size: 12px;
+    font-size: 15px;
     padding: 5px 10px;
     margin: 4px 0;
     display: block;
-    width: 50%;
   }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
   .profile-container {
-    padding: 10px;
-    width: 80%;
-    margin: 10px auto;
+    padding: 5px;
+    max-width: 1000px;
   }
 
   h2 {
@@ -202,12 +200,12 @@ button.deleteUser:hover {
   }
 
   #usersTable {
-    font-size: 12px;
+    font-size: 16px;
     display: block;
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;
-    margin: 10px auto;
+    margin: 15px auto;
   }
 
   button.manage-btn,
@@ -220,8 +218,7 @@ button.deleteUser:hover {
 
 @media (min-width: 769px) and (max-width: 1279px) {
   .profile-container {
-    padding: 5px;
-    width: 70%;
+    max-width: 1000px;
   }
 
   h2 {
@@ -239,14 +236,15 @@ button.deleteUser:hover {
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;
-    margin: 10px auto 10px;
+    margin: 15px auto;
+
   }
 
   button.manage-btn,
   button.editUser,
   button.deleteUser {
     font-size: 14px;
-    padding: 6px 12px;
+    padding: 6px 6px;
   }
 }
 
